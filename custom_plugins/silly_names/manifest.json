@@ -1,13 +1,12 @@
 {
+    "domain": "silly_names",
     "name": "Silly Names",
     "author": "Michael Niggel",
     "author_uri": "https://hazardcreative.com",
     "description": "Replaces pilot callsign during lap announcement with alternate",
-    "info_uri": "https://github.com/HazardCreative/RotorHazard-Silly-Names",
+    "documentation_uri": "https://github.com/HazardCreative/RotorHazard-Silly-Names",
     "license": "RotorHazard",
     "license_uri": "https://github.com/RotorHazard/RotorHazard/blob/main/LICENSE",
-    "version": "1.0.0",
-    "required_rhapi_version": "1.2",
-    "update_uri": null,
-    "text_domain": null
+    "version": "1.1.0",
+    "required_rhapi_version": "1.3"
 }

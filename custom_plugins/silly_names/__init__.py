@@ -13,7 +13,7 @@ class SillyNames():
         self._rhapi.filters.add(Flt.EMIT_PHONETIC_DATA, 'silly-name-filter', self.replace_silly_name)
 
     def replace_silly_name(self, data):
-        silly_name_frequency = self._rhapi.db.option('silly_name_frequency', as_int=True)
+        silly_name_frequency = self._rhapi.config.get('GENERAL', 'silly_name_frequency', as_int=True)
         if silly_name_frequency and random.randrange(0, 99, 1) < silly_name_frequency:
             silly_name = self._rhapi.db.pilot_attribute_value(data['pilot_id'], 'silly_name', default_value=None)
             if silly_name:
@@ -32,9 +32,12 @@ def initialize(rhapi):
     rhapi.fields.register_option(UIField(
         'silly_name_frequency',
         'Usage Frequency (percent)',
-        UIFieldType.BASIC_INT,
-        5,
-        '0–100'
+        UIFieldType.NUMBER,
+        value=5,
+        html_attributes={
+            'min': 1,
+            'max': 99
+        },
+        persistent_section='GENERAL',
     ), 'silly_name_panel')
     rhapi.events.on(Evt.STARTUP, sillyplugin.startup)
-
